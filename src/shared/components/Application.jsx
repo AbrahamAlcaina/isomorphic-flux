@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Nav from './Nav';
+import Footer from './footer';
 import Home from './Home';
 import About from './About';
 import ApplicationStore from '../stores/ApplicationStore';
@@ -25,7 +26,7 @@ var Application = React.createClass({
                   </aside>
 
                 </main>
-                <footer className="fi-footer">…</footer>
+                <Footer />
                 </div>
         );
     },

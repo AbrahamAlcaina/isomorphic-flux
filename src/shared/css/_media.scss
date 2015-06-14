@@ -1,8 +1,8 @@
 .Media {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 1em;
-  max-width: 50%;
+  margin: 1em;
+  max-width: 45%;
   @media screen and (max-width: 768px){
     max-width: 100%;
   }
