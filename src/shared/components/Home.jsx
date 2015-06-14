@@ -16,9 +16,7 @@ class Home extends React.Component {
 
         return (
             <article className="fi-content">
-                <div className="grid grid--guttersLg grid--full large-grid--fit">
                  {list}
-                </div>
             </article>
         );
     }
