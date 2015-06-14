@@ -12,22 +12,22 @@ class Nav extends React.Component {
             var link = links[name];
 
             if (selected === name) {
-                className = 'pure-menu-selected';
+                className = 'active';
             }
 
             return (
                 <li className={className} key={link.path}>
-                    <NavLink routeName={link.page} activeStyle={{backgroundColor: '#eee'}}>{link.title}</NavLink>
+                    <NavLink routeName={link.page} activeClass='active' >{link.title}</NavLink>
                 </li>
             );
         });
 
         return (
-            <div className="fi-nav">
-                <ul className="pure-menu pure-menu-horizontal">
+            <nav className="fi-nav nav-wrapper navbar-fixed teal">
+                <ul className="">
                     {linkHTML}
                 </ul>
-            </div>
+            </nav>
         );
     }
 }
