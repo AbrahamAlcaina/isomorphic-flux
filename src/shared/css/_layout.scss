@@ -25,6 +25,8 @@
 .fi-content {
     margin-top: var(--space);
     min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .fi-nav {
