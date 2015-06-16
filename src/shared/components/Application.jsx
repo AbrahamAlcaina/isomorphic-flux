@@ -14,10 +14,10 @@ import { handleHistory } from 'fluxible-router';
 var Application = React.createClass({
     render: function () {
         var Handler = this.props.currentRoute.get('handler');
-
+        console.log('props', this.props);
         return (
             <div className="fi">
-                <Nav selected={this.props.currentPageName} links={this.props.pages} />
+                <Nav selected={this.props.currentNavigate.url} links={this.props.pages} />
                 <main className="fi-body">
 
                     <Handler />

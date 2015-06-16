@@ -11,13 +11,13 @@ class Nav extends React.Component {
             var className = '';
             var link = links[name];
 
-            if (selected === name) {
+            if (selected === link.path) {
                 className = 'active';
             }
-
+            console.log(links,  selected, name, className);
             return (
                 <li className={className} key={link.path}>
-                    <NavLink routeName={link.page} activeClass='active' >{link.title}</NavLink>
+                    <NavLink routeName={link.page}>{link.title}</NavLink>
                 </li>
             );
         });

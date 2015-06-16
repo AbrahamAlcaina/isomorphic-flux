@@ -2,7 +2,7 @@ import React from 'react';
 
 class Home extends React.Component {
     render() {
-        const media = (<div className="Media z-depth-2">
+        const media = (<div className="Media z-depth-1">
                         <img className="Media-figure Image" src="//placekitten.com/g/50/50" alt="Kitten" />
                         <div className="Media-body">
                           <h3 className="Media-title">Standard Media Object</h3>
@@ -12,7 +12,7 @@ class Home extends React.Component {
         const card = (
             <div className="card">
             <div className="card-image">
-              <img src="//lorempixel.com/50/50/" alt="image" />
+              <img src="//lorempixel.com/300/300/" alt="image" />
               <span className="card-title">Card Title</span>
             </div>
             <div className="card-content">
