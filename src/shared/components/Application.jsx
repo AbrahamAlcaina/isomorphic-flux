@@ -17,7 +17,9 @@ var Application = React.createClass({
         console.log('props', this.props);
         return (
             <div className="fi">
-                <Nav selected={this.props.currentNavigate.url} links={this.props.pages} />
+                 <div className="navbar-fixed">
+                    <Nav selected={this.props.currentNavigate.url} links={this.props.pages} />
+                </div>
                 <main className="fi-body">
 
                     <Handler />

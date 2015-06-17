@@ -8,15 +8,15 @@ class Nav extends React.Component {
         const links = this.props.links;
 
         const linkHTML = Object.keys(links).map(function (name) {
-            var className = '';
+            var className = 'center ';
             var link = links[name];
 
             if (selected === link.path) {
-                className = 'active';
+                className += 'active';
             }
             console.log(links,  selected, name, className);
             return (
-                <li className={className} key={link.path}>
+                <li className={className} key={link.path} >
                     <NavLink routeName={link.page}>{link.title}</NavLink>
                 </li>
             );
@@ -24,7 +24,7 @@ class Nav extends React.Component {
 
         return (
             <nav className="fi-nav nav-wrapper navbar-fixed teal">
-                <ul className="">
+                <ul className="" >
                     {linkHTML}
                 </ul>
             </nav>
@@ -37,4 +37,4 @@ Nav.defaultProps = {
     links: {}
 };
 
-module.exports = Nav;
+export default Nav;
