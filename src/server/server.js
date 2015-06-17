@@ -15,9 +15,7 @@ const server = express();
 
 server.set('state namespace', 'App');
 server.use(compression());
-process.env.PWD = process.cwd();
-
-server.use('/public', express.static(path.join(process.env.PWD, 'build')));
+server.use('/public', express.static(path.join(process.cwd(), 'build')));
 server.use(reactMiddleware);
 
 server.listen(port);
