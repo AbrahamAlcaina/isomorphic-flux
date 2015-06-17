@@ -8,7 +8,7 @@
     "nodemon": "nodemon --exec babel-node -- src/server/server.js",
     "babel-pro" : "babel src --out-dir lib",
     "dev": "npm run nodemon & npm run webpack-dev",
-    "install": "npm run babel-pro & npm run webpack-pro",
+    "install": "npm install & npm run babel-pro & npm run webpack-pro",
     "lint": "eslint src"
   },
   "dependencies": {
