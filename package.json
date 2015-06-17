@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "webpack-dev": "webpack --progress --colors --watch",
-    "webpack-pro": "webpack --optimize-minimize --optimize-occurence-order --config=./webpack.config.pro.js",
+    "webpack-pro": "webpack --optimize-minimize --optimize-occurence-order --config webpack.config.pro.js",
     "nodemon": "nodemon --exec babel-node -- src/server/server.js",
     "babel-pro" : "babel src --out-dir lib",
     "dev": "npm run nodemon & npm run webpack-dev",
