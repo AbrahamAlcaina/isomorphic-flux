@@ -3,8 +3,6 @@
 import React from 'react';
 import Nav from './Nav';
 import Footer from './footer';
-import Home from './Home';
-import About from './About';
 import ApplicationStore from '../stores/ApplicationStore';
 import provideContext from 'fluxible/addons/provideContext';
 import connectToStores from 'fluxible/addons/connectToStores';
@@ -16,21 +14,18 @@ var Application = React.createClass({
         var Handler = this.props.currentRoute.get('handler');
         console.log('props', this.props);
         return (
-            <div className="fi">
-                 <div className="navbar-fixed">
-                    <Nav selected={this.props.currentNavigate.url} links={this.props.pages} />
-                </div>
-                <main className="fi-body">
-
-                    <Handler />
-                    <aside className="fi-ads u-textCenter">
-                    <strong>Advertisements</strong>
-                  </aside>
-
-                </main>
-                <Footer />
-                </div>
-        );
+                <div className="fi">
+                    <div className="navbar-fixed">
+                        <Nav selected={this.props.currentNavigate.url} links={this.props.pages} />
+                    </div>
+                    <main className="fi-body">
+                        <Handler />
+                        <aside className="fi-ads u-textCenter">
+                            <strong>Advertisements</strong>
+                         </aside>
+                    </main>
+                    <Footer />
+                </div>);
     },
 
     componentDidUpdate: function(prevProps, prevState) {

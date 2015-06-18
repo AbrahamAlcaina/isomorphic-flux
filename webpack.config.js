@@ -20,11 +20,11 @@ module.exports = {
         }, {
             test: /\.js$/,
             exclude: /node_modules/,
-            loaders: ['babel']
+            loader: 'babel?blacklist=validation.react'
         }, {
             test: /\.jsx$/,
             exclude: /node_modules/,
-            loaders: ['babel?blacklist=validation.react']
+            loader: 'babel?blacklist=validation.react'
         }, {
             test: /\.json$/,
             loader: 'json-loader'
