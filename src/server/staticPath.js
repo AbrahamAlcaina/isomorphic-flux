@@ -9,7 +9,7 @@ let base = __dirname;
 if (process.env.NODE_ENV == 'production') {
     console.log('production');
     //base = process.cwd();
-    base = ''
+    base = '../';
     console.log(base);
 }
 
