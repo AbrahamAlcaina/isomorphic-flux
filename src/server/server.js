@@ -5,6 +5,9 @@
  * and the application is rendered via React.
  */
 
+process.env.PWD = process.cwd();
+console.log(process.env.PWD, 'yep');
+
 import express from 'express';
 import path from 'path';
 import compression from 'compression';
@@ -12,7 +15,7 @@ import reactMiddleware from './reactMidelware';
 
 const port = process.env.PORT || 3000;
 const server = express();
-server.use('/public', express.static(path.resolve(path.join(__dirname, '../../public'))));
+server.use('/public', express.static(path.resolve(path.join(process.env.PWD , '/public'))));
 server.set('state namespace', 'App');
 server.use(compression());
 server.use(reactMiddleware);
