@@ -6,15 +6,15 @@
  */
 
 
-import staticPaht from './staticPath';
+import staticPath from './staticPath';
 import express from 'express';
 import compression from 'compression';
 import reactMiddleware from './reactMidelware';
 
 const server = express();
-server.use('/public', express.static(staticPaht));
-server.set('state namespace', 'App');
 server.use(compression());
+server.use('/public', express.static(staticPath));
+server.set('state namespace', 'App');
 server.use(reactMiddleware);
 
 const port = process.env.PORT || 3000;
