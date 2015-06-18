@@ -6,7 +6,7 @@ module.exports = {
     },
     entry: './src/client/client.js',
     output: {
-        path: './build',
+        path: './public',
         publicPath: '/public',
         filename: 'js/[name].js'
     },
