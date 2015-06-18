@@ -2,18 +2,17 @@ import path from 'path';
 
 
 
+
+let staticPath = path.resolve(path.join(__dirname, '../../public'));
+
 console.log(process.env);
-
-let base = __dirname;
-
 if (process.env.NODE_ENV == 'production') {
     console.log('production');
     //base = process.cwd();
-    base = '../';
-    console.log(base);
+    staticPath = 'public';
 }
 
-const staticPath = path.resolve(path.join(base, 'public'));
+
 
 console.log('static path ===>', staticPath);
 
