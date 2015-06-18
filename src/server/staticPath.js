@@ -1,8 +1,13 @@
 import path from 'path';
 
-process.env.PWD = __dirname;
+process.env.PWD = process.cwd();
 console.log('====>', process.env.PWD);
 
+
+if (process.env.NODE_ENV === 'production'){
+    console.log('production');
+    process.env.PWD = '';
+}
 const staticPath = path.resolve(path.join(process.env.PWD , '/public'));
 
 console.log('static path ===>', staticPath);
