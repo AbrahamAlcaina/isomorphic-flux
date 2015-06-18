@@ -5,23 +5,20 @@
  * and the application is rendered via React.
  */
 
-process.env.PWD = process.cwd();
-console.log(process.env.PWD, 'yep');
 
+import staticPaht from './staticPath';
 import express from 'express';
-import path from 'path';
 import compression from 'compression';
 import reactMiddleware from './reactMidelware';
 
-const port = process.env.PORT || 3000;
 const server = express();
-server.use('/public', express.static(path.resolve(path.join(process.env.PWD , '/public'))));
+server.use('/public', express.static(staticPaht));
 server.set('state namespace', 'App');
 server.use(compression());
 server.use(reactMiddleware);
 
+const port = process.env.PORT || 3000;
 server.listen(port);
-
 console.log('Listening on port ' + port);
 
 export default server;
