@@ -10,12 +10,19 @@ import staticPath from './staticPath';
 import express from 'express';
 import compression from 'compression';
 import reactMiddleware from './reactMidelware';
+import wall from './api/wall';
+import mongoose from 'mongoose';
 
+
+mongoose.connect('mongodb://localhost:27017/e1');
 const server = express();
+
 server.use(compression());
+server.use('/api/wall', wall);
 server.use('/public', express.static(staticPath));
 server.set('state namespace', 'App');
 server.use(reactMiddleware);
+
 
 const port = process.env.PORT || 3000;
 server.listen(port);
