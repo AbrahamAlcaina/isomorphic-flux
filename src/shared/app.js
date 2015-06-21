@@ -14,4 +14,4 @@ app.registerStore(RouteStore);
 app.registerStore(ApplicationStore);
 app.registerStore(WallStore);
 
-module.exports = app;
+export default app;

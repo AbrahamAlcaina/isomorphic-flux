@@ -18,14 +18,12 @@ class WallStore extends BaseStore {
         return this.wall;
     }
 
-    // For sending state to the client
     dehydrate() {
         return {
             wall: this.wall
         };
     }
 
-    // For rehydrating server state
     rehydrate(state) {
         this.wall = state.wall;
     }

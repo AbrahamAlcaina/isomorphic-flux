@@ -1,5 +1,4 @@
 import Wall from './model';
-console.log(Wall);
 
 export const index = (req, res) =>
     Wall.find({},(error, posts) => {
