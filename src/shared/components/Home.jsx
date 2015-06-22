@@ -1,6 +1,7 @@
 import React from 'react';
 
 class Home extends React.Component {
+
     render() {
         const media = (<div className="Media z-depth-1">
                         <img className="Media-figure Image" src="//placekitten.com/g/50/50" alt="Kitten" />
@@ -46,16 +47,33 @@ class Home extends React.Component {
           </div>
             );
 
-        const list = [];
-        for(let i = 0; i < 20; i++){
-            list.push(media);
-            if ( Math.random()<0.4){
-                list.push(card);
-            }
-            if ( Math.random()<0.1){
-                list.push(video);
-            }
-        }
+        // const list = [];
+        // for(let i = 0; i < 20; i++){
+        //     list.push(media);
+        //     if ( Math.random()<0.4){
+        //         list.push(card);
+        //     }
+        //     if ( Math.random()<0.1){
+        //         list.push(video);
+        //     }
+        // }
+
+        const list = this.props.wall.map((post)=>  (
+            <div className="card large">
+            <div className="card-image">
+              <img src="{post.img}" alt="image" />
+              <span className="card-title">{post.title}</span>
+            </div>
+            <div className="card-content">
+              <p>{post.text}</p>
+            </div>
+            <div className="card-action">
+              <a href="#">This is a link</a>
+              <a href='#'>This is a link</a>
+            </div>
+          </div>
+            )
+        );
 
         return (
             <article className="fi-content">
@@ -63,6 +81,9 @@ class Home extends React.Component {
             </article>
         );
     }
+
 }
+
+
 
 export default Home;
