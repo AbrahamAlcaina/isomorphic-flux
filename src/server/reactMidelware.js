@@ -30,6 +30,8 @@ function reactMiddleware(req, res, next) {
 
         debug('Exposing context state');
         const exposed = 'window.App=' + serialize(app.dehydrate(context)) + ';';
+        console.log('====>');
+        console.log(exposed);
 
         debug('Rendering Application component into html');
         const html = React.renderToStaticMarkup(htmlComponent({
