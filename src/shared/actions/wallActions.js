@@ -1,7 +1,9 @@
-import request from 'superagent';
+import fetch from '../fetch';
 
-export default async function getWall(actionContext, payload, done) {
-    let wall = await request.get('/api/wall').exec();
-    actionContext.dispatch('RECEIVE_WALL', wall);
+export async function getWall(actionContext, payload, done) {
+    let wall = await fetch('/api/wall')
+        .then((response) => response.json());
+    actionContext.dispatch('RECEIVE_PAGE', wall);
     done();
+
 };

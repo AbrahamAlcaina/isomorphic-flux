@@ -36,6 +36,7 @@
     "fluxible": "^0.4.11",
     "fluxible-plugin-fetchr": "^0.3.3",
     "fluxible-router": "^0.1.8",
+    "isomorphic-fetch": "^2.1.0",
     "json-loader": "~0.5.2",
     "mongoose": "^4.0.5",
     "node-sass": "^3.2.0",

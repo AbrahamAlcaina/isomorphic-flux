@@ -5,6 +5,7 @@ import debug from 'debug';
 import app from '../shared/app';
 
 require('../shared/css/app.scss');
+require('isomorphic-fetch');
 
 
 const debugClient = debug('traze');

@@ -1,8 +1,10 @@
 import React from 'react';
+import {getWall} from '../actions/wallActions';
 
 class Home extends React.Component {
 
     render() {
+
         const media = (<div className="Media z-depth-1">
                         <img className="Media-figure Image" src="//placekitten.com/g/50/50" alt="Kitten" />
                         <div className="Media-body">
@@ -84,6 +86,9 @@ class Home extends React.Component {
 
 }
 
+Home.contextTypes = {
+    executeAction: React.PropTypes.func.isRequired
+};
 
 
 export default Home;
