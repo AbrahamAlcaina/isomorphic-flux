@@ -32,14 +32,12 @@ function reactMiddleware(req, res, next) {
         const exposed = 'window.App=' + serialize(app.dehydrate(context)) + ';';
         console.log('====>');
         console.log(exposed);
-
         debug('Rendering Application component into html');
         const html = React.renderToStaticMarkup(htmlComponent({
             context: context.getComponentContext(),
             state: exposed,
             markup: React.renderToString(context.createElement())
         }));
-
         debug('Sending markup');
         res.type('html');
         res.write('<!DOCTYPE html>' + html);

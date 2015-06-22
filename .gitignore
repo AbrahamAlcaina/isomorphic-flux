@@ -2,3 +2,5 @@ build
 node_modules
 lib
 /public
+
+npm-debug.log

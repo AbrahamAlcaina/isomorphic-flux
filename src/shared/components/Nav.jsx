@@ -14,7 +14,6 @@ class Nav extends React.Component {
             if (selected === link.path) {
                 className += 'active';
             }
-            console.log(links,  selected, name, className);
             return (
                 <li className={className} key={link.path} >
                     <NavLink routeName={link.page}>{link.title}</NavLink>

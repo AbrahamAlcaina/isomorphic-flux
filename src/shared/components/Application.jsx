@@ -13,7 +13,6 @@ import { handleHistory } from 'fluxible-router';
 var Application = React.createClass({
     render: function () {
         var Handler = this.props.currentRoute.get('handler');
-        console.log('props', this.props);
         return (
                 <div className="fi">
                     <div className="navbar-fixed">
@@ -42,8 +41,8 @@ export default handleHistory(provideContext(connectToStores(
     Application,
     [ApplicationStore, WallStore],
     function (stores, props) {
-        var appStore = stores.ApplicationStore;
-        var wallStore = stores.WallStore;
+        const appStore = stores.ApplicationStore;
+        const wallStore = stores.WallStore;
         return {
             currentPageName: appStore.getCurrentPageName(),
             pageTitle: appStore.getPageTitle(),

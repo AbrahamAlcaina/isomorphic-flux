@@ -14,7 +14,9 @@ import wall from './api/wall';
 import mongoose from 'mongoose';
 
 
-mongoose.connect('mongodb://localhost:27017/e1');
+//mongoose.connect('mongodb://localhost:27017/e1');
+mongoose.connect('mongodb://heroku_grqlbcz8uOWbYZ3m3f28fQQNrVYpQTgfad4wfu62@ds033390.mongolab.com:33390/heroku_grqlbcz8');
+
 const server = express();
 
 server.use(compression());
