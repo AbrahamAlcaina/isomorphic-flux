@@ -63,7 +63,7 @@ class Home extends React.Component {
         const list = this.props.wall.map((post)=>  (
             <div className="card large">
             <div className="card-image">
-              <img src="{post.img}" alt="image" />
+              <img src="{decodeURI(post.img)}" alt="image" />
               <span className="card-title">{post.title}</span>
             </div>
             <div className="card-content">

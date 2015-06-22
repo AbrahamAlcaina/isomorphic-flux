@@ -1,4 +1,4 @@
-import {wallAction} from '../actions/wallActions';
+import {getWall} from '../actions/wallActions';
 export default {
     home: {
         path: '/',
@@ -6,7 +6,7 @@ export default {
         page: 'home',
         title: 'Home',
         handler: require('../components/Home'),
-        action: wallAction
+        action: getWall
     },
     about: {
         path: '/about',
