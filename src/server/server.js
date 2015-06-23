@@ -1,3 +1,5 @@
+require('babel/polyfill');
+
 /**
  * This leverages Express to create and run the http server.
  * A Fluxible context is created and executes the navigateAction
@@ -12,6 +14,7 @@ import compression from 'compression';
 import reactMiddleware from './reactMidelware';
 import wall from './api/wall';
 import mongoose from 'mongoose';
+
 
 
 //mongoose.connect('mongodb://localhost:27017/e1');
