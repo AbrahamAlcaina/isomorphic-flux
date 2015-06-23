@@ -7,8 +7,7 @@ class WallStore extends BaseStore {
     }
 
     handleReceivePage(payload) {
-        console.log('aqui');
-        this.wall.push(payload);
+        this.wall = this.wall.concat(payload);
         this.emitChange();
     }
 
