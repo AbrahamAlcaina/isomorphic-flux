@@ -4,9 +4,10 @@ const Schema = mongoose.Schema;
 
 
 const WallSchema = new Schema({
-  title: String,
-  text: String,
-  src: String
+    _id: Number,
+    title: String,
+    text: String,
+    src: String
 });
 
 export default mongoose.model('Wall', WallSchema);
