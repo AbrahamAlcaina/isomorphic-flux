@@ -18,7 +18,8 @@ import mongoose from 'mongoose';
 
 
 const mongoConection = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/e1';
-mongoose.connect(mongoConection);
+//mongoose.connect(mongoConection);
+mongoose.connect('mongodb://heroku_grqlbcz8:tj85i2e52rqej4b399qisbtjd9@ds033390.mongolab.com:33390/heroku_grqlbcz8');
 
 const server = express();
 
