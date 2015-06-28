@@ -16,7 +16,7 @@ class Nav extends React.Component {
             }
             return (
                 <li className={className} key={link.path} >
-                    <NavLink routeName={link.page}>{link.title}</NavLink>
+                    <NavLink routeName={link.page} preserveScrollPosition={true}>{link.title}</NavLink>
                 </li>
             );
         });
