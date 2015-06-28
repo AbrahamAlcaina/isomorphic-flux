@@ -7,16 +7,16 @@ module.exports = {
     entry: './src/client/client.js',
     output: {
         path: './public',
-        publicPath: '/public',
+        publicPath: '/public/',
         filename: 'js/[name].js'
     },
     module: {
         loaders: [{
             test: /\.css$/,
-            loader: 'css-loader!autoprefixer-loader'
+            loader: 'css-loader?root=.!autoprefixer-loader'
         }, {
             test: /\.scss$/,
-            loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader!autoprefixer-loader")
+            loader: ExtractTextPlugin.extract("style-loader", "css-loader?root=.!autoprefixer-loader!sass-loader")
         }, {
             test: /\.js$/,
             exclude: /node_modules/,
@@ -28,7 +28,8 @@ module.exports = {
         }, {
             test: /\.json$/,
             loader: 'json-loader'
-        }]
+        }
+        ,{test: /\.(ttf|woff|woff2|eot|svg)$/i, loader: 'url-loader?limit=10000' }]
     },
     plugins: [
         new ExtractTextPlugin("css/[name].css")

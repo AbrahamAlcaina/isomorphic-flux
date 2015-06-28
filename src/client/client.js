@@ -9,7 +9,7 @@ require('isomorphic-fetch');
 require('babel/polyfill');
 
 
-const debugClient = debug('traze');
+const debugClient = debug('e1');
 const dehydratedState = window.App; // Sent from the server
 
 window.React = React; // For chrome dev tool support

@@ -1,53 +1,58 @@
 import React from 'react';
 import {getWall} from '../actions/wallActions';
+import WallStore from '../stores/WallStore';
+import ImageLoader   from './Image';
 
 class Home extends React.Component {
 
+    loadMore(){
+        this.context.executeAction(getWall);
+    }
     render() {
 
-        const media = (<div className="Media z-depth-1">
-                        <img className="Media-figure Image" src="//placekitten.com/g/50/50" alt="Kitten" />
-                        <div className="Media-body">
-                          <h3 className="Media-title">Standard Media Object</h3>
-                          <p>Donec imperdiet sem leo, id rutrum risus aliquam vitae. Cras tincidunt porta mauris, vel feugiat mauris accumsan eget.</p>
-                        </div>
-                      </div>);
-        const card = (
-            <div className="card large">
-            <div className="card-image">
-              <img src="//lorempixel.com/300/300/" alt="image" />
-              <span className="card-title">Card Title</span>
-            </div>
-            <div className="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div className="card-action">
-              <a href="#">This is a link</a>
-              <a href='#'>This is a link</a>
-            </div>
-          </div>
-            );
+        // const media = (<div className="Media z-depth-1">
+        //                 <img className="Media-figure Image" src="//placekitten.com/g/50/50" alt="Kitten" />
+        //                 <div className="Media-body">
+        //                   <h3 className="Media-title">Standard Media Object</h3>
+        //                   <p>Donec imperdiet sem leo, id rutrum risus aliquam vitae. Cras tincidunt porta mauris, vel feugiat mauris accumsan eget.</p>
+        //                 </div>
+        //               </div>);
+        // const card = (
+        //     <div className="card large">
+        //     <div className="card-image">
+        //       <img src="//lorempixel.com/300/300/" alt="image" />
+        //       <span className="card-title">Card Title</span>
+        //     </div>
+        //     <div className="card-content">
+        //       <p>I am a very simple card. I am good at containing small bits of information.
+        //       I am convenient because I require little markup to use effectively.</p>
+        //     </div>
+        //     <div className="card-action">
+        //       <a href="#">This is a link</a>
+        //       <a href='#'>This is a link</a>
+        //     </div>
+        //   </div>
+        //     );
 
-        const video = (
+        // const video = (
 
-            <div className="card">
-             <div className="card-image">
-                <div className="video-container no-controls">
-              <iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0;autohide=1" frameborder="0" allowfullscreen></iframe>
-            </div>
-            </div>
-            <div className="card-content ">
+        //     <div className="card">
+        //      <div className="card-image">
+        //         <div className="video-container no-controls">
+        //       <iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0;autohide=1" frameborder="0" allowfullscreen></iframe>
+        //     </div>
+        //     </div>
+        //     <div className="card-content ">
 
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div className="card-action">
-              <a href="#">This is a link</a>
-              <a href='#'>This is a link</a>
-            </div>
-          </div>
-            );
+        //       <p>I am a very simple card. I am good at containing small bits of information.
+        //       I am convenient because I require little markup to use effectively.</p>
+        //     </div>
+        //     <div className="card-action">
+        //       <a href="#">This is a link</a>
+        //       <a href='#'>This is a link</a>
+        //     </div>
+        //   </div>
+        //     );
 
         // const list = [];
         // for(let i = 0; i < 20; i++){
@@ -59,11 +64,12 @@ class Home extends React.Component {
         //         list.push(video);
         //     }
         // }
+        const wallStore = this.props.context.getStore(WallStore);
 
         const list = this.props.wall.map((post)=>  (
             <div className="card large">
             <div className="card-image">
-              <img src={post.img} alt="image" />
+              <ImageLoader  src={post.img} alt="image"  width="500" height="500"/>
               <span className="card-title">{post.title}</span>
             </div>
             <div className="card-content">
@@ -79,7 +85,7 @@ class Home extends React.Component {
 
         return (
             <article className="fi-content">
-                 {list}
+                {list}
             </article>
         );
     }
