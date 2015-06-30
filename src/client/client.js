@@ -7,6 +7,7 @@ import app from '../shared/app';
 require('../shared/css/app.scss');
 require('isomorphic-fetch');
 require('babel/polyfill');
+require('./fastClickMobile');
 
 
 const debugClient = debug('e1');
