@@ -1,4 +1,3 @@
-require('babel/polyfill');
 
 /**
  * This leverages Express to create and run the http server.
@@ -22,10 +21,9 @@ const mongoConection = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/e1
 mongoose.connect('mongodb://heroku_grqlbcz8:tj85i2e52rqej4b399qisbtjd9@ds033390.mongolab.com:33390/heroku_grqlbcz8');
 
 const server = express();
-
+server.use('/public', express.static(staticPath));
 server.use(compression());
 server.use('/api/wall', wall);
-server.use('/public', express.static(staticPath));
 server.set('state namespace', 'App');
 server.use(reactMiddleware);
 
