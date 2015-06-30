@@ -6,7 +6,7 @@ class WallStore extends BaseStore {
         this.wall = [];
         this.hasMoreItems = true;
         this.elements = 0;
-        this.pageSize = 5;
+        this.pageSize = 10;
     }
 
     handleReceivePage(payload) {

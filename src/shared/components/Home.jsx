@@ -1,12 +1,17 @@
 import React from 'react';
-import {getWall} from '../actions/wallActions';
+import {getNextPage} from '../actions/wallActions';
 import WallStore from '../stores/WallStore';
 import ImageLoader   from './Image';
+import InfiniteScroll from './InfiniteScroll';
 
 class Home extends React.Component {
-
+    constructor(...params){
+        super(...params);
+        this.loadMore = this.loadMore.bind(this);
+        this.wallStore = this.props.context.getStore(WallStore);
+    }
     loadMore(){
-        this.context.executeAction(getWall);
+        this.context.executeAction(getNextPage);
     }
     render() {
 
@@ -64,12 +69,12 @@ class Home extends React.Component {
         //         list.push(video);
         //     }
         // }
-        const wallStore = this.props.context.getStore(WallStore);
+
 
         const list = this.props.wall.map((post)=>  (
             <div className="card large">
             <div className="card-image">
-              <ImageLoader  src={post.img} alt="image"  width="500" height="500"/>
+              <ImageLoader  src={post.img} alt="image" />
               <span className="card-title">{post.title}</span>
             </div>
             <div className="card-content">
@@ -85,7 +90,13 @@ class Home extends React.Component {
 
         return (
             <article className="fi-content">
+                <InfiniteScroll
+                    pageStart={0}
+                    loadMore={this.loadMore}
+                    hasMore={this.wallStore.hasMoreItems}
+                    loader={<div className="loader">Loading ...</div>}>
                 {list}
+                </InfiniteScroll>
             </article>
         );
     }
