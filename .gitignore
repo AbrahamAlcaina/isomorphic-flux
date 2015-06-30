@@ -6,3 +6,4 @@ lib
 npm-debug.log
 .orig
 logs.txt
+newrelic_agent.log
