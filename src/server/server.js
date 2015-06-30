@@ -22,10 +22,10 @@ mongoose.connect('mongodb://heroku_grqlbcz8:tj85i2e52rqej4b399qisbtjd9@ds033390.
 
 const server = express();
 server.use('/public', express.static(staticPath));
-server.use(compression());
 server.use('/api/wall', wall);
 server.set('state namespace', 'App');
 server.use(reactMiddleware);
+server.use(compression());
 
 
 const port = process.env.PORT || 3000;
