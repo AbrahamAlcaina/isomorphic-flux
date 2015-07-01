@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class ImageLoader extends React.Component {
+class ImageLoader extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -44,3 +44,5 @@ export default class ImageLoader extends React.Component {
     );
   }
 }
+
+export default ImageLoader;
