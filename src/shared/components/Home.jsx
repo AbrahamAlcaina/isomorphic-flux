@@ -39,7 +39,9 @@ class Home extends React.Component {
                     pageStart={0}
                     loadMore={this.loadMore}
                     hasMore={this.wallStore.hasMoreItems}
-                    loader={<div className="loader">Loading ...</div>}>
+                    loader={<div className="progress">
+                                <div className="indeterminate"></div>
+                            </div>}>
                 {list}
                 </InfiniteScroll>
 
