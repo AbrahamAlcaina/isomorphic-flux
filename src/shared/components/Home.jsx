@@ -2,7 +2,6 @@ import React from 'react';
 import {getNextPage} from '../actions/wallActions';
 import WallStore from '../stores/WallStore';
 import ImageLoader   from './Image';
-import LazyLoad from './LazyLoad';
 import InfiniteScroll from './InfiniteScroll';
 
 
