@@ -26,10 +26,16 @@ class InfiniteScroll extends React.Component {
 
     render() {
       const props = this.props;
-      return React.DOM.div(null, props.children, props.hasMore && (props.loader || InfiniteScroll._defaultLoader));
+      return (
+        <div className="fi-content">
+            {props.children}
+            {props.hasMore && (props.loader || InfiniteScroll._defaultLoader)}
+        </div>);
+      //return React.DOM.div(null, props.children, props.hasMore && (props.loader || InfiniteScroll._defaultLoader));
     }
 
     scrollListener() {
+
       const el = React.findDOMNode(this);
       const scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
       if (topPosition(el) + el.offsetHeight - scrollTop - window.innerHeight < Number(this.props.threshold)) {

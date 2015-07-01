@@ -2,6 +2,7 @@ import React from 'react';
 import {getNextPage} from '../actions/wallActions';
 import WallStore from '../stores/WallStore';
 import ImageLoader   from './Image';
+import LazyLoad from './LazyLoad';
 import InfiniteScroll from './InfiniteScroll';
 
 
@@ -17,24 +18,24 @@ class Home extends React.Component {
     render() {
 
         const list = this.props.wall.map((post)=>  (
-            <div className="card large">
-            <div className="card-image">
-              <ImageLoader  src={post.img} alt="image" />
-              <span className="card-title">{post.title}</span>
-            </div>
-            <div className="card-content">
-              <p>{post.text}</p>
-            </div>
-            <div className="card-action">
-              <a href="#">This is a link</a>
-              <a href='#'>This is a link</a>
-            </div>
-          </div>
+                <div className="card large">
+                <div className="card-image">
+                  <ImageLoader  src={post.img} alt="image" />
+                  <span className="card-title">{post.title}</span>
+                </div>
+                <div className="card-content">
+                  <p>{post.text}</p>
+                </div>
+                <div className="card-action">
+                  <a href="#">This is a link</a>
+                  <a href='#'>This is a link</a>
+                </div>
+              </div>
             )
         );
 
         return (
-            <article className="fi-content">
+
                 <InfiniteScroll
                     pageStart={0}
                     loadMore={this.loadMore}
@@ -42,7 +43,7 @@ class Home extends React.Component {
                     loader={<div className="loader">Loading ...</div>}>
                 {list}
                 </InfiniteScroll>
-            </article>
+
         );
     }
 
