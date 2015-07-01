@@ -17,7 +17,7 @@ class Home extends React.Component {
     render() {
 
         const list = this.props.wall.map((post)=>  (
-                <div className="card large">
+                <div className="card large" key={post._id}>
                 <div className="card-image">
                   <ImageLoader  src={post.img} alt="image" />
                   <span className="card-title">{post.title}</span>
