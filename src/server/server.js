@@ -6,8 +6,7 @@
  * and the application is rendered via React.
  */
 require('babel/polyfill');
-require('newrelic');
-
+import newrelic from 'newrelic';
 import staticPath from './staticPath';
 import express from 'express';
 import compression from 'compression';
