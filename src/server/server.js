@@ -22,10 +22,10 @@ mongoose.connect(mongoConection);
 
 const server = express();
 server.use('/public', express.static(staticPath));
+server.use(compression());
 server.use('/api/wall', wall);
 server.set('state namespace', 'App');
 server.use(reactMiddleware);
-server.use(compression());
 
 
 const port = process.env.PORT || 3000;
