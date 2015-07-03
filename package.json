@@ -51,6 +51,7 @@
     "sass-loader": "^1.0.2",
     "serialize-javascript": "^1.0.0",
     "serve-favicon": "^2.3.0",
+    "spdy": "^1.32.0",
     "style-loader": "^0.12.3",
     "superagent": "^1.2.0",
     "url-loader": "^0.5.6",

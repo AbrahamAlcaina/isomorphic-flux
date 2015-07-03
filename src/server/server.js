@@ -8,6 +8,7 @@
 require('babel/polyfill');
 import newrelic from 'newrelic';
 import staticPath from './staticPath';
+import spdy  from 'spdy';
 import express from 'express';
 import compression from 'compression';
 import reactMiddleware from './reactMidelware';
@@ -29,7 +30,8 @@ server.use(reactMiddleware);
 
 
 const port = process.env.PORT || 3000;
-server.listen(port);
+const options =  {plain:true, ssl:false};
+spdy.createServer(options, server).listen(port);
 console.log('Listening on port ' + port);
 
 export default server;
