@@ -17,7 +17,7 @@ class Home extends React.Component {
     render() {
 
         const list = this.props.wall.map((post)=>  (
-                <div className="card large" key={post._id}>
+                <div className="card" key={post._id}>
                 <div className="card-image">
                   <ImageLoader  src={post.img} alt="image" />
                   <span className="card-title">{post.title}</span>
@@ -39,8 +39,10 @@ class Home extends React.Component {
                     pageStart={0}
                     loadMore={this.loadMore}
                     hasMore={this.wallStore.hasMoreItems}
+                    threshold={400}
                     loader={<div className="progress">
                                 <div className="indeterminate"></div>
+                                <p className="flow-text center">Loading ...</p>
                             </div>}>
                 {list}
                 </InfiniteScroll>
