@@ -28,6 +28,9 @@ module.exports = {
         }, {
             test: /\.json$/,
             loader: 'json-loader'
+        },  {
+            test: /.(png|ico|xml)/,
+            loader: 'url-loader?limit=1000&name=[name].[ext]'
         }
         ,{test: /\.(ttf|woff|woff2|eot|svg)$/i, loader: 'url-loader?limit=10000' }]
     },
