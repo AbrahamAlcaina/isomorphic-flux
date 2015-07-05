@@ -17,13 +17,13 @@ class Home extends React.Component {
     render() {
 
         const list = this.props.wall.map((post)=>  (
-                <div className="card" key={post._id}>
+                <div className="card large hoverable" key={post._id}>
                 <div className="card-image">
                   <ImageLoader  src={post.img} alt="image" />
                   <span className="card-title">{post.title}</span>
                 </div>
                 <div className="card-content">
-                  <p>{post.text}</p>
+                  <p className="truncate">{post.text}</p>
                 </div>
                 <div className="card-action">
                   <a href="#">This is a link</a>
