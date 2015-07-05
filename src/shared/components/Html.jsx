@@ -31,10 +31,10 @@ class Html extends React.Component {
                 <link rel="icon" type="image/png" href="/public/favicon-16x16.png" sizes="16x16"/>
                 <link rel="manifest" href="/public/manifest.json"/>
                 <link rel="shortcut icon" href="/public/favicon.ico"/>
-                <meta name="msapplication-TileColor" content="#da532c"/>
+                <meta name="msapplication-TileColor" content="#009688"/>
                 <meta name="msapplication-TileImage" content="/public/mstile-144x144.png"/>
                 <meta name="msapplication-config" content="/public/browserconfig.xml"/>
-                <meta name="theme-color" content="#ffffff"/>
+                <meta name="theme-color" content="#009688"/>
 
             </head>
             <body id="app" dangerouslySetInnerHTML={{__html: this.props.markup}}>
