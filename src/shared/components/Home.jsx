@@ -1,7 +1,7 @@
 import React from 'react';
 import {getWall} from '../actions/wallActions';
 import WallStore from '../stores/WallStore';
-import ImageLoader   from './Image';
+import ImageLoader from './Image';
 
 class Home extends React.Component {
 
