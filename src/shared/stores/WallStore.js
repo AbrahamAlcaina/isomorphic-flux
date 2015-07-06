@@ -1,9 +1,10 @@
 import BaseStore from 'fluxible/addons/BaseStore';
+import Immutable from 'immutable';
 
 class WallStore extends BaseStore {
     constructor(dispatcher) {
         super(dispatcher);
-        this.wall = [];
+        this.wall = Immutable.List();
         this.hasMoreItems = true;
         this.elements = 0;
         this.pageSize = 10;
@@ -12,7 +13,7 @@ class WallStore extends BaseStore {
     handleReceivePage(payload) {
         this.hasMoreItems = payload.length === this.pageSize;
         this.elements += payload.length;
-        this.wall = this.wall.concat(payload);
+        this.wall = this.wall.concat(Immutable.fromJS(payload));
         this.emitChange();
     }
 
@@ -22,14 +23,16 @@ class WallStore extends BaseStore {
 
     dehydrate() {
         return {
-            wall: this.wall,
-            elements: this.elements
+            wall: this.wall.toArray(),
+            elements: this.elements,
+            hasMoreItems: this.hasMoreItems
         };
     }
 
     rehydrate(state) {
-        this.wall = state.wall;
+        this.wall = Immutable.fromJS(state.wall);
         this.elements = state.elements;
+        this.hasMoreItems = state.hasMoreItems;
     }
 }
 
