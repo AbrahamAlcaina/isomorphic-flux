@@ -1,124 +1,75 @@
 import React from 'react';
 
-const {PropTypes} = React;
-const {span} = React.DOM;
+class ImageLoader extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            visible: false,
+            loaded: false,
+            mounted: false
+        };
+        this.onImageLoad = this.onImageLoad.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
+        this.handleVisible = this.handleVisible.bind(this);
+    }
 
-const Status = {
-  PENDING: 'pending',
-  LOADING: 'loading',
-  LOADED: 'loaded',
-  FAILED: 'failed',
-};
-
-
-export default class ImageLoader extends React.Component {
-  static propTypes = {
-    wrapper: PropTypes.func,
-    className: PropTypes.string,
-    preloader: PropTypes.func,
-  };
-
-  static defaultProps = {
-    wrapper: span,
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {status: props.src ? Status.LOADING : Status.PENDING};
+  onImageLoad() {
+    if (this.state.mounted) {
+      this.setState({loaded: true});
+    }
   }
 
   componentDidMount() {
-    if (this.state.status === Status.LOADING) {
-      this.createLoader();
-    }
+        window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('resize', this.handleScroll);
+        this.handleScroll();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.src !== nextProps.src) {
-      this.setState({
-        status: nextProps.src ? Status.LOADING : Status.PENDING,
-      });
-    }
+  componentWillUnmount(){
+    this.state.mounted = false;
+     window.removeEventListener('scroll', this.handleScroll);
+            window.removeEventListener('resize', this.handleScroll);
   }
 
   componentDidUpdate() {
-    if (this.state.status === Status.LOADING && !this.img) {
-      this.createLoader();
-    }
-  }
-
-  componentWillUnmount() {
-    this.destroyLoader();
-  }
-
-  getClassName() {
-    let className = `imageloader ${this.state.status}`;
-    if (this.props.className) className = `${className} ${this.props.className}`;
-    return className;
-  }
-
-  createLoader() {
-    this.destroyLoader();  // We can only have one loader at a time.
-
-    this.img = new Image();
-    this.img.onload = ::this.handleLoad;
-    this.img.onerror = ::this.handleError;
-    this.img.src = this.props.src;
-  }
-
-  destroyLoader() {
-    if (this.img) {
-      this.img.onload = null;
-      this.img.onerror = null;
-      this.img = null;
-    }
-  }
-
-  handleLoad(event) {
-    this.destroyLoader();
-    this.setState({status: Status.LOADED});
-
-    if (this.props.onLoad) this.props.onLoad(event);
-  }
-
-  handleError(error) {
-    this.destroyLoader();
-    this.setState({status: Status.FAILED});
-
-    if (this.props.onError) this.props.onError(error);
-  }
-
-  renderImg() {
-    // Reduce props to just those not used by ImageLoader.
-    // The assumption is that any other props are meant for the loaded image.
-    const blacklist = Object.keys(ImageLoader.propTypes).concat('children');
-    let props = {};
-    for (let k in this.props) {
-      if (!this.props.hasOwnProperty(k)) continue;
-      if (blacklist.indexOf(k) >= 0) continue;
-      props[k] = this.props[k];
-    }
-
-    return <img {...props} />;
-  }
+            if(!this.state.visible) this.handleScroll();
+        }
 
   render() {
-    let wrapperArgs = [{className: this.getClassName()}];
+    const {className, ...props} = this.props;
+    let imgClasses = 'image';
+    imgClasses+= className ? ' '+ className: '';
+    if (this.state.loaded) {
+      imgClasses += ' image-loaded';
+    }
+    return (
+      <img  {...props} className={imgClasses} />
+    );
+  }
 
-    switch (this.state.status) {
-      case Status.LOADED:
-        wrapperArgs.push(this.renderImg());
-        break;
-
-      case Status.FAILED:
-        if (this.props.children) wrapperArgs.push(this.props.children);
-        break;
-
-      default:
-        if (this.props.preloader) wrapperArgs.push(this.props.preloader());
-        break;
+    handleScroll() {
+        const bounds = React.findDOMNode(this).getBoundingClientRect(),
+        scrollTop = window.pageYOffset,
+        top = bounds.top + scrollTop,
+        height = bounds.bottom - bounds.top;
+        if(top < (scrollTop + window.innerHeight) && (top + height) > scrollTop){
+            this.setState({visible: true});
+            this.handleVisible();
+        }
     }
 
-    return this.props.wrapper(...wrapperArgs);
-  }
+    handleVisible() {
+        var imgTag =  React.findDOMNode(this);
+        var imgSrc = imgTag.getAttribute('src');
+        this.state.mounted = true;
+        // You may want to rename the component if the <Image> definition
+        // overrides window.Image
+        var img = new window.Image();
+        img.onload = this.onImageLoad;
+        img.src = imgSrc;
+        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('resize', this.handleScroll);
+    }
 }
+
+export default ImageLoader;

@@ -8,8 +8,8 @@ class Nav extends React.Component {
         const links = this.props.links;
 
         const linkHTML = Object.keys(links).map(function (name) {
-            var className = 'center ';
-            var link = links[name];
+            let className = 'center ';
+            let link = links[name];
 
             if (selected === link.path) {
                 className += 'active';
@@ -23,7 +23,7 @@ class Nav extends React.Component {
 
         return (
             <nav className="fi-nav nav-wrapper navbar-fixed teal">
-                <ul className="" >
+                <ul>
                     {linkHTML}
                 </ul>
             </nav>
