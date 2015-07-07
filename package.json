@@ -14,7 +14,7 @@
     "lint": "eslint src"
   },
   "engines": {
-    "iojs": "2.x.x",
+    "iojs": "2.3.x",
     "npm": "2.10.x"
   },
   "dependencies": {
