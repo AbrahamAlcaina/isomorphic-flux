@@ -1,6 +1,6 @@
 import React from 'react';
-import {getNextPage} from '../actions/wallActions';
-import WallStore from '../stores/WallStore';
+import {getNextPage} from '../actions/newsActions';
+import NewsStore from '../stores/NewsStore';
 import Card from './Card';
 import InfiniteScroll from './InfiniteScroll';
 
@@ -8,7 +8,7 @@ class Home extends React.Component {
     constructor(...params){
         super(...params);
         this.loadMore = this.loadMore.bind(this);
-        this.wallStore = this.props.context.getStore(WallStore);
+        this.newsStore = this.props.context.getStore(NewsStore);
     }
 
     loadMore(){
@@ -16,18 +16,17 @@ class Home extends React.Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        return this.props.wall !== nextProps.wall;
+        return this.props.news !== nextProps.news;
     }
 
     render() {
-        const list = this.props.wall.map((item) => ( <Card card={item} />));
-
+        const list = this.props.news.map((item) => ( <Card card={item} key={item.get('_id')}/>));
         return (
 
                 <InfiniteScroll
                     pageStart={0}
                     loadMore={this.loadMore}
-                    hasMore={this.wallStore.hasMoreItems}
+                    hasMore={this.newsStore.hasMoreItems}
                     threshold={400}
                     loader={<div className="progress">
                                 <div className="indeterminate"></div>
@@ -35,7 +34,6 @@ class Home extends React.Component {
                             </div>}>
                     {list}
                 </InfiniteScroll>
-
         );
     }
 
@@ -43,7 +41,7 @@ class Home extends React.Component {
 
 Home.contextTypes = {
     executeAction: React.PropTypes.func.isRequired,
-    wall: React.PropTypes.array
+    news: React.PropTypes.array
 };
 
 

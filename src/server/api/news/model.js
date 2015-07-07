@@ -3,11 +3,11 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 
-const WallSchema = new Schema({
+const NewsSchema = new Schema({
     _id: Number,
     title: String,
     text: String,
     src: String
 });
 
-export default mongoose.model('Wall', WallSchema);
+export default mongoose.model('New', NewsSchema);

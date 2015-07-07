@@ -5,14 +5,14 @@
  * based on the URL. Once completed, the store state is dehydrated
  * and the application is rendered via React.
  */
-require('babel/polyfill');
+//require('babel/polyfill');
 import newrelic from 'newrelic';
 import staticPath from './staticPath';
 import spdy  from 'spdy';
 import express from 'express';
 import compression from 'compression';
 import reactMiddleware from './reactMidelware';
-import wall from './api/wall';
+import news from './api/news';
 import mongoose from 'mongoose';
 
 
@@ -24,7 +24,7 @@ mongoose.connect(mongoConection);
 const server = express();
 server.use(compression());
 server.use('/public', express.static(staticPath));
-server.use('/api/wall', wall);
+server.use('/api/news', news);
 server.set('state namespace', 'App');
 server.use(reactMiddleware);
 

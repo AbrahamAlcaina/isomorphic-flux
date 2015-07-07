@@ -4,7 +4,7 @@ import React from 'react';
 import Nav from './Nav';
 import Footer from './footer';
 import ApplicationStore from '../stores/ApplicationStore';
-import WallStore from '../stores/WallStore';
+import NewsStore from '../stores/NewsStore';
 import provideContext from 'fluxible/addons/provideContext';
 import connectToStores from 'fluxible/addons/connectToStores';
 import { handleHistory } from 'fluxible-router';
@@ -28,7 +28,7 @@ var Application = React.createClass({
                 </div>);
     },
 
-    componentDidUpdate: function(prevProps, prevState) {
+    componentDidUpdate: function(prevProps) {
         const newProps = this.props;
         if (newProps.pageTitle === prevProps.pageTitle) {
             return;
@@ -39,15 +39,15 @@ var Application = React.createClass({
 
 export default handleHistory(provideContext(connectToStores(
     Application,
-    [ApplicationStore, WallStore],
+    [ApplicationStore, NewsStore],
     function (stores, props) {
         const appStore = stores.ApplicationStore;
-        const wallStore = stores.WallStore;
+        const newsStore = stores.NewsStore;
         return {
             currentPageName: appStore.getCurrentPageName(),
             pageTitle: appStore.getPageTitle(),
             pages: appStore.getPages(),
-            wall: wallStore.getWall()
+            news: newsStore.getNews()
         };
     }
 )));

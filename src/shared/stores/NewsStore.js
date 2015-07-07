@@ -1,10 +1,10 @@
 import BaseStore from 'fluxible/addons/BaseStore';
 import Immutable from 'immutable';
 
-class WallStore extends BaseStore {
+class NewsStore extends BaseStore {
     constructor(dispatcher) {
         super(dispatcher);
-        this.wall = Immutable.List();
+        this.news = Immutable.List();
         this.hasMoreItems = true;
         this.elements = 0;
         this.pageSize = 10;
@@ -13,33 +13,33 @@ class WallStore extends BaseStore {
     handleReceivePage(payload) {
         this.hasMoreItems = payload.length === this.pageSize;
         this.elements += payload.length;
-        this.wall = this.wall.concat(Immutable.fromJS(payload));
+        this.news = this.news.concat(Immutable.fromJS(payload));
         this.emitChange();
     }
 
-    getWall() {
-        return this.wall;
+    getNews() {
+        return this.news;
     }
 
     dehydrate() {
         return {
-            wall: this.wall.toArray(),
+            news: this.news.toArray(),
             elements: this.elements,
             hasMoreItems: this.hasMoreItems
         };
     }
 
     rehydrate(state) {
-        this.wall = Immutable.fromJS(state.wall);
+        this.news = Immutable.fromJS(state.news);
         this.elements = state.elements;
         this.hasMoreItems = state.hasMoreItems;
     }
 }
 
 
-WallStore.storeName = 'WallStore';
-WallStore.handlers = {
+NewsStore.storeName = 'NewsStore';
+NewsStore.handlers = {
     'RECEIVE_PAGE': 'handleReceivePage'
 };
 
-export default WallStore;
+export default NewsStore;

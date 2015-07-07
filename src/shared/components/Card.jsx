@@ -9,7 +9,7 @@ class Card extends React.Component {
 
     render(){
         return (
-            <div className="card large hoverable" key={this.props.card.get('_id')}>
+            <div className="card large hoverable">
                 <div className="card-image">
                   <ImageLoader src={this.props.card.get('img')} alt="image" />
                   <span className="card-title">{this.props.card.get('title')}</span>
@@ -26,7 +26,7 @@ class Card extends React.Component {
     }
 }
 
-Card.contextTypes = {
+Card.PropTypes = {
     card: React.PropTypes.object.isRequired
 };
 

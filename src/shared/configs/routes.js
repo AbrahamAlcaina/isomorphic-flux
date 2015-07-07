@@ -1,4 +1,4 @@
-import {getWall} from '../actions/wallActions';
+import {getNews} from '../actions/newsActions';
 export default {
     home: {
         path: '/',
@@ -6,7 +6,7 @@ export default {
         page: 'home',
         title: 'Home',
         handler: require('../components/Home'),
-        action: getWall
+        action: getNews
     },
     about: {
         path: '/about',
