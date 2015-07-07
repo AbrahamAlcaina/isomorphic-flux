@@ -1,1 +1,1 @@
-web: node lib/server/server.js
+web: iojs lib/server/server.js
