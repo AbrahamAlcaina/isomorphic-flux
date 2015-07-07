@@ -10,7 +10,7 @@
     "dev": "npm run nodemon & npm run webpack-dev",
     "clean": "rm -rf public & rm -rf lib",
     "postinstall": "npm run clean & npm run babel-pro & npm run webpack-pro",
-    "start": "node lib/server/server.js",
+    "start": "iojs lib/server/server.js",
     "lint": "eslint src"
   },
   "engines": {
