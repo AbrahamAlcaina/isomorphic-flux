@@ -5,7 +5,7 @@
  * based on the URL. Once completed, the store state is dehydrated
  * and the application is rendered via React.
  */
-//require('babel/polyfill');
+require('babel/polyfill');
 import newrelic from 'newrelic';
 import staticPath from './staticPath';
 import spdy  from 'spdy';
