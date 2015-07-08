@@ -1,4 +1,4 @@
-# isomorphic-flux
+# isomorphic-flux (WIP)
 It's a proof of how implement an isomorphic application.
 You can view the result in [heroku](http://experiment-1.herokuapp.com)
 ## Uses
