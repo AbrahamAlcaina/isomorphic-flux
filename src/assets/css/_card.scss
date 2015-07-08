@@ -1,0 +1,23 @@
+.card {
+    @media only screen and (max-width: 40em)
+    {
+        max-width: 95%;
+    }
+    @media only screen and (min-width: 40.063em) and (max-width: 64em)
+    {
+        max-width: 45%;
+    }
+    @media only screen and (min-width: 64.063em) and (max-width: 90em)
+    {
+        max-width: 30%;
+    }
+    @media only screen and (min-width: 90.063em) and (max-width: 120em)
+    {
+        max-width: 18%;
+    }
+    @media only screen and (min-width: 120.063em)
+    {
+        max-width: 10%;
+    }
+
+}

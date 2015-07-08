@@ -1,0 +1,9 @@
+build
+node_modules
+lib
+/public
+
+npm-debug.log
+.orig
+logs.txt
+newrelic_agent.log
