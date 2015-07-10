@@ -18,3 +18,13 @@ You can view the result in [heroku](http://experiment-1.herokuapp.com)
 3.- Send to the client.   
 4.- Loads the app (aka main.js).   
 5.- Rehydrate the app in the client side.  
+
+
+## Install/Run
+`npm install`   
+`npm start`   
+
+## Develop
+Start full stack `npm run dev` (if you are in windows open 2 consoles `npm run nodemon` `npm run webpack-dev`)
+
+
