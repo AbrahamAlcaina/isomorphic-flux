@@ -3,6 +3,7 @@
 import React from 'react';
 import debug from 'debug';
 import app from '../shared/app';
+import createElementWithContext from 'fluxible-addons-react/createElementWithContext';
 
 require('../assets/css/app.scss');
 require('isomorphic-fetch');
@@ -48,7 +49,7 @@ app.rehydrate(dehydratedState, function (err, context) {
     const mountNode = document.getElementById('app');
 
     debugClient('React Rendering');
-    React.render(context.createElement(), mountNode, function () {
+    React.render(createElementWithContext(context), mountNode, function () {
         debugClient('React Rendered');
     });
 });

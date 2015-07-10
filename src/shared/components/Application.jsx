@@ -5,13 +5,27 @@ import Nav from './Nav';
 import Footer from './footer';
 import ApplicationStore from '../stores/ApplicationStore';
 import NewsStore from '../stores/NewsStore';
-import provideContext from 'fluxible/addons/provideContext';
-import connectToStores from 'fluxible/addons/connectToStores';
+import provideContext from 'fluxible-addons-react/provideContext';
+import connectToStores from 'fluxible-addons-react/connectToStores';
 import { handleHistory } from 'fluxible-router';
 
-// @TODO Upgrade to ES6 class when RouterMixin is replaced
-var Application = React.createClass({
-    render: function () {
+@provideContext
+@handleHistory
+@connectToStores(
+    [ApplicationStore, NewsStore],
+    (context, props) => {
+        const appStore = context.getStore(ApplicationStore);
+        const newsStore = context.getStore(NewsStore);
+        return {
+            currentPageName: appStore.getCurrentPageName(),
+            pageTitle: appStore.getPageTitle(),
+            pages: appStore.getPages(),
+            news: newsStore.getNews()
+        };
+    }
+)
+class Application extends React.Component{
+    render() {
         var Handler = this.props.currentRoute.get('handler');
         return (
                 <div className="fi">
@@ -26,28 +40,15 @@ var Application = React.createClass({
                     </main>
                     <Footer />
                 </div>);
-    },
+    }
 
-    componentDidUpdate: function(prevProps) {
+    componentDidUpdate (prevProps) {
         const newProps = this.props;
         if (newProps.pageTitle === prevProps.pageTitle) {
             return;
         }
         document.title = newProps.pageTitle;
     }
-});
+}
 
-export default handleHistory(provideContext(connectToStores(
-    Application,
-    [ApplicationStore, NewsStore],
-    function (stores, props) {
-        const appStore = stores.ApplicationStore;
-        const newsStore = stores.NewsStore;
-        return {
-            currentPageName: appStore.getCurrentPageName(),
-            pageTitle: appStore.getPageTitle(),
-            pages: appStore.getPages(),
-            news: newsStore.getNews()
-        };
-    }
-)));
+export default Application;
