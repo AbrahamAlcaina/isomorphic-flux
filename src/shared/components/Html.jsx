@@ -1,10 +1,7 @@
 
 import React from 'react';
 import ApplicationStore from '../stores/ApplicationStore';
-import path from 'path';
-import fs from 'fs';
-
-var css = fs.readFileSync(path.resolve(path.join(__dirname, '../../../public/css/main.css')));
+import css from '../../server/loadCss';
 
 class Html extends React.Component {
     render() {
