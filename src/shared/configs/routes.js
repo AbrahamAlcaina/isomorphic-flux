@@ -5,7 +5,8 @@ export default {
         method: 'get',
         page: 'home',
         title: 'Home',
-        handler: require('../components/Home')
+        handler: require('../components/Home'),
+        
     },
     about: {
         path: '/about',

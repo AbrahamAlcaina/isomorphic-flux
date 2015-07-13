@@ -8,6 +8,7 @@ import React from 'react';
 import app from '../shared/app';
 import HtmlComponent from '../shared/components/Html';
 import createElementWithContext from 'fluxible-addons-react/createElementWithContext';
+import css from './loadCss';
 
 const htmlComponent = React.createFactory(HtmlComponent);
 const debug = debugLib('traze');
@@ -35,12 +36,13 @@ function reactMiddleware(req, res, next) {
         const html = React.renderToStaticMarkup(htmlComponent({
             context: context.getComponentContext(),
             state: exposed,
-            markup: React.renderToString(createElementWithContext(context))
+            markup: React.renderToString(createElementWithContext(context)),
+            css: css
         }));
         debug('Sending markup');
-        res.type('html');
-        res.write('<!DOCTYPE html>' + html);
-        res.end();
+        res.set('Content-Type', 'text/html');
+        res.send('<!DOCTYPE html>' + html);
+        debug('Sent markup');
     });
 }
 
