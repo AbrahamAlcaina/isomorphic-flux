@@ -1,6 +1,7 @@
 
 import React from 'react';
 import ApplicationStore from '../stores/ApplicationStore';
+import createElementWithContext from 'fluxible-addons-react/createElementWithContext';
 
 class Html extends React.Component {
     render() {
@@ -32,7 +33,8 @@ class Html extends React.Component {
                 <meta name="theme-color" content="#009688"/>
 
             </head>
-            <body id="app" dangerouslySetInnerHTML={{__html: this.props.markup}}>
+            <body id="app">
+                {createElementWithContext(this.props.globalContext)}
             </body>
             <script dangerouslySetInnerHTML={{__html: this.props.state}}></script>
             <script async src="/public/js/main.js"></script>

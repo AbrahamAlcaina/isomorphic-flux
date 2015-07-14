@@ -7,7 +7,6 @@ import debugLib from 'debug';
 import React from 'react';
 import app from '../shared/app';
 import HtmlComponent from '../shared/components/Html';
-import createElementWithContext from 'fluxible-addons-react/createElementWithContext';
 import css from './loadCss';
 
 const htmlComponent = React.createFactory(HtmlComponent);
@@ -36,7 +35,7 @@ function reactMiddleware(req, res, next) {
         const html = React.renderToStaticMarkup(htmlComponent({
             context: context.getComponentContext(),
             state: exposed,
-            markup: React.renderToString(createElementWithContext(context)),
+            globalContext: context,
             css: css
         }));
         debug('Sending markup');
