@@ -6,7 +6,7 @@ export default {
         page: 'home',
         title: 'Home',
         handler: require('../components/Home'),
-        
+        action: getNews
     },
     about: {
         path: '/about',
