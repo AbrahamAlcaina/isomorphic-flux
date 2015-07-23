@@ -5,7 +5,7 @@
   "scripts": {
     "webpack-dev": "webpack --progress --colors --watch",
     "webpack-pro": "node node_modules/webpack/bin/webpack.js -p --config webpack.config.pro.js",
-    "nodemon": "set DEBUG=* && nodemon --exec babel-node -- src/server/server.js",
+    "nodemon": "set DEBUG=* && DEBUG=* nodemon --exec babel-node -- src/server/server.js",
     "babel-pro": "babel src --out-dir lib",
     "dev": "npm run nodemon & npm run webpack-dev",
     "clean": "rm -rf public & rm -rf lib",

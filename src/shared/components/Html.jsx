@@ -1,10 +1,6 @@
 
 import React from 'react';
 import ApplicationStore from '../stores/ApplicationStore';
-import path from 'path';
-import fs from 'fs';
-
-var css = fs.readFileSync(path.resolve(path.join(__dirname, '../../../public/css/main.css')));
 
 class Html extends React.Component {
     render() {
@@ -14,8 +10,7 @@ class Html extends React.Component {
                 <meta charSet="utf-8" />
                 <title>{this.props.context.getStore(ApplicationStore).getPageTitle()}</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-                <style dangerouslySetInnerHTML={{__html: css.toString()}} />
-
+                <style dangerouslySetInnerHTML={{__html: this.props.css}} />
                 <link rel="apple-touch-icon" sizes="57x57" href="/public/apple-touch-icon-57x57.png"/>
                 <link rel="apple-touch-icon" sizes="60x60" href="/public/apple-touch-icon-60x60.png"/>
                 <link rel="apple-touch-icon" sizes="72x72" href="/public/apple-touch-icon-72x72.png"/>
