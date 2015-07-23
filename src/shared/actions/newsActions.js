@@ -1,26 +1,52 @@
 import fetch from '../fetch';
 import NewsStore from '../stores/NewsStore';
 
+const fetchOptions = {
+    method: 'post',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/graphql'
+    }
+};
+
+
 export async function getNews(actionContext, payload, done) {
     const newsStore = actionContext.getStore(NewsStore);
-    if (newsStore.elements >  0 ) {
+    if (newsStore.elements > 0) {
         return done();
     }
 
-    const url = '/api/news/page/' + newsStore.elements + '/' + newsStore.pageSize;
-    const news = await fetch(url).then((response) => response.json());
-    actionContext.dispatch('RECEIVE_PAGE', news);
+    fetchOptions.body = `
+        query getPage {
+            news(skip:${newsStore.elements}, take:${newsStore.pageSize}) {
+                title,
+                text,
+                img
+            }
+        }
+    `;
+    const news = await fetch('/graphql', fetchOptions).then((response) => response.json());
+    actionContext.dispatch('RECEIVE_PAGE', news.data.news);
     done();
 }
 
 
-export async function getNextPage (actionContext, payload, done) {
+export async function getNextPage(actionContext, payload, done) {
     const newsStore = actionContext.getStore(NewsStore);
     if (!newsStore.hasMoreItems) {
         return done();
     }
-    const url = '/api/news/page/' + newsStore.elements + '/' + newsStore.pageSize;
-    const news = await fetch(url).then((response) => response.json());
-    actionContext.dispatch('RECEIVE_PAGE', news);
+
+    fetchOptions.body = `
+        query getPage {
+            news(skip:${newsStore.elements}, take:${newsStore.pageSize}) {
+                title,
+                text,
+                img
+            }
+        }
+    `;
+    const news = await fetch('/graphql', fetchOptions).then((response) => response.json());
+    actionContext.dispatch('RECEIVE_PAGE', news.data.news);
     done();
 }

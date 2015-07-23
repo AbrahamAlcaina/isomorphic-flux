@@ -5,14 +5,13 @@
  * based on the URL. Once completed, the store state is dehydrated
  * and the application is rendered via React.
  */
-//require('babel/polyfill');
+require('babel/polyfill');
 import newrelic from 'newrelic';
 import staticPath from './staticPath';
 import spdy  from 'spdy';
 import express from 'express';
 import compression from 'compression';
 import reactMiddleware from './reactMidelware';
-import news from './api/news';
 import graphql from './graphql';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
@@ -25,10 +24,9 @@ mongoose.connect('mongodb://heroku_grqlbcz8:tj85i2e52rqej4b399qisbtjd9@ds033390.
 
 const server = express();
 server.use(compression());
-server.use(bodyParser.text({ type: 'application/graphql' }));
 server.use('/public', express.static(staticPath));
+server.use(bodyParser.text({ type: 'application/graphql' }));
 server.use('/graphql', graphql);
-server.use('/api/news', news);
 server.set('state namespace', 'App');
 server.use(reactMiddleware);
 
