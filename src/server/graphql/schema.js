@@ -7,7 +7,7 @@ import {
     GraphQLInt,
     GraphQLList
 }
-from 'graphql/lib/type';
+from 'graphql/type';
 
 import NewsMongoose from './user.model';
 
