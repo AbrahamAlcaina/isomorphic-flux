@@ -11,14 +11,18 @@ from 'graphql/type';
 
 import NewsMongoose from './user.model';
 
+/**
+ * Simple version.
+ * It doesn't work with fragments
+ * @param  {array} fieldASTs
+ * @return {array<String>}  projections
+ */
 function getProjection(fieldASTs) {
-    return fieldASTs.selectionSet.selections.reduce((projections, selection) => {
+    return fieldASTs[0].selectionSet.selections.reduce((projections, selection) => {
         projections[selection.name.value] = 1;
-
         return projections;
     }, {});
 }
-
 
 const newType = new GraphQLObjectType({
     name: 'new',
@@ -59,12 +63,12 @@ const schema = new GraphQLSchema({
                         type: GraphQLInt
                     }
                 },
-                resolve: (user, params, source, fieldASTs) => {
-                    const projections = getProjection(fieldASTs);
-                    const up = params.skip + params.take;
+                resolve: (user, args, info) => {
+                    const projections = getProjection(info.fieldASTs);
+                    const up = args.skip + args.take;
                     return NewsMongoose.find({
                         "_id": {
-                            "$gt": params.skip,
+                            "$gt": args.skip,
                             "$lte": up
                         }
                     }, projections);
