@@ -4,10 +4,10 @@ import {
 }
 from 'fluxible-router';
 import debugLib from 'debug';
-import React from './react';
+import React from '../../node_modules/react/dist/react.min.js';
 import app from '../shared/app';
 import HtmlComponent from '../shared/components/Html';
-import createElementWithContext from 'fluxible-addons-react/createElementWithContext';
+import { createElementWithContext } from 'fluxible-addons-react';
 import css from './loadCss';
 
 const htmlComponent = React.createFactory(HtmlComponent);
@@ -33,12 +33,14 @@ function reactMiddleware(req, res, next) {
         debug('Exposing context state');
         const exposed = 'window.App=' + serialize(app.dehydrate(context)) + ';';
         debug('Rendering Application component into html');
-        const html = React.renderToStaticMarkup(htmlComponent({
+
+        const html = React.renderToString(htmlComponent({
             context: context.getComponentContext(),
             state: exposed,
             markup: createElementWithContext(context),
             css: css
         }));
+
         debug('Sending markup');
         res.type('html');
         res.write('<!DOCTYPE html>' + html);
