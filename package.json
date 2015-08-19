@@ -11,7 +11,7 @@
     "clean": "rm -rf public & rm -rf lib",
     "postinstall": "npm run clean & npm run babel-pro & npm run webpack-pro & npm run hack",
     "start": "iojs lib/server/server.js",
-    "hack": "echo module.exports = require('react/dist/react.min.js'); > node_modules/react/react.js",
+    "hack": "echo \"module.exports = require('react/dist/react.min.js');\" > node_modules/react/react.js",
     "lint": "eslint src"
   },
   "engines": {
