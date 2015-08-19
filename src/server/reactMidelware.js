@@ -4,7 +4,7 @@ import {
 }
 from 'fluxible-router';
 import debugLib from 'debug';
-import React from '../../node_modules/react/dist/react.min.js';
+import React from 'react';
 import app from '../shared/app';
 import HtmlComponent from '../shared/components/Html';
 import { createElementWithContext } from 'fluxible-addons-react';
