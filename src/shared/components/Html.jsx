@@ -30,7 +30,6 @@ class Html extends React.Component {
                 <meta name="msapplication-TileImage" content="/public/mstile-144x144.png"/>
                 <meta name="msapplication-config" content="/public/browserconfig.xml"/>
                 <meta name="theme-color" content="#009688"/>
-
             </head>
             <body id="app" dangerouslySetInnerHTML={{__html: this.props.markup}}>
             </body>
