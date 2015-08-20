@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ApplicationStore from '../stores/ApplicationStore';
 
@@ -31,8 +30,7 @@ class Html extends React.Component {
                 <meta name="msapplication-config" content="/public/browserconfig.xml"/>
                 <meta name="theme-color" content="#009688"/>
             </head>
-            <body id="app">
-                {this.props.markup}
+            <body id="app" dangerouslySetInnerHTML={{__html: this.props.markup}}>
             </body>
             <script dangerouslySetInnerHTML={{__html: this.props.state}}></script>
             <script async src="/public/js/main.js"></script>

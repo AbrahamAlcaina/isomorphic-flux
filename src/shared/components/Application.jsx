@@ -33,7 +33,7 @@ class Application extends React.Component{
                         <Nav selected={this.props.currentNavigate.url} links={this.props.pages} />
                     </div>
                     <main className="fi-body">
-                        <Handler {... this.props}/>
+                        <Handler {...this.props}/>
                         <aside className="fi-ads u-textCenter">
                             <strong>Advertisements</strong>
                          </aside>

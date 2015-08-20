@@ -34,10 +34,10 @@ function reactMiddleware(req, res, next) {
         const exposed = 'window.App=' + serialize(app.dehydrate(context)) + ';';
         debug('Rendering Application component into html');
 
-        const html = React.renderToString(htmlComponent({
+        const html = React.renderToStaticMarkup(htmlComponent({
             context: context.getComponentContext(),
             state: exposed,
-            markup: createElementWithContext(context),
+            markup: React.renderToString(createElementWithContext(context)),
             css: css
         }));
 
