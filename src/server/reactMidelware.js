@@ -11,7 +11,7 @@ import { createElementWithContext } from 'fluxible-addons-react';
 import css from './loadCss';
 
 const htmlComponent = React.createFactory(HtmlComponent);
-const debug = debugLib('traze');
+const debug = debugLib('e1');
 
 function reactMiddleware(req, res, next) {
 
