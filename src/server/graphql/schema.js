@@ -13,6 +13,8 @@ import NewsMongoose from './user.model';
 
 /**
  * Simple version.
+ * possible implementation
+ * https://github.com/RisingStack/graffiti-mongoose/blob/master/src/projection.js
  * It doesn't work with fragments
  * @param  {array} fieldASTs
  * @return {array<String>}  projections
@@ -28,8 +30,9 @@ const newType = new GraphQLObjectType({
     name: 'new',
     description: 'contains a feed of news',
     fields: () => ({
-        id: {
-            type: new GraphQLNonNull(GraphQLString),
+        _id: {
+            name: '_id',
+            type: new GraphQLNonNull(GraphQLInt),
             description: 'Id feed'
         },
         title: {
@@ -67,9 +70,9 @@ const schema = new GraphQLSchema({
                     const projections = getProjection(info.fieldASTs);
                     const up = args.skip + args.take;
                     return NewsMongoose.find({
-                        "_id": {
-                            "$gt": args.skip,
-                            "$lte": up
+                        '_id': {
+                            '$gt': args.skip,
+                            '$lte': up
                         }
                     }, projections);
                 }

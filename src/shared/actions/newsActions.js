@@ -19,6 +19,7 @@ export async function getNews(actionContext, payload, done) {
     fetchOptions.body = `
         query getPage {
             news(skip:${newsStore.elements}, take:${newsStore.pageSize}) {
+                _id,
                 title,
                 text,
                 img
